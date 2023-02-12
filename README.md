@@ -9,6 +9,9 @@
 
 An application of posts with comments that shows the use of events to communicate the different micro services.
 
+[Link to course](https://www.udemy.com/course/microservices-with-node-js-and-react/)
+
+![course image](./.doc/images/course.png)
 
 ## Technology Stack & Tools
 
