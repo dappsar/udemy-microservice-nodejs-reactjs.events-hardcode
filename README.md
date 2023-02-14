@@ -21,10 +21,14 @@ An application of posts with comments that shows the use of events to communicat
 - Express
 - reactjs
 - micro-services
+- Docker
+- Kubernetes
 
 ## Requirements For Initial Setup
 
 - Install [NodeJS](https://nodejs.org/)
+- Docker, Docker-compose
+- Kubernetes ([kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/))
 
 ## Setting Up
 ### 1. Clone/Download the Repository
