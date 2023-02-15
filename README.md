@@ -29,6 +29,7 @@ An application of posts with comments that shows the use of events to communicat
 - Install [NodeJS](https://nodejs.org/)
 - Docker, Docker-compose
 - Kubernetes ([kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/))
+- miniKube (linux)
 
 ## Setting Up
 ### 1. Clone/Download the Repository
@@ -44,4 +45,23 @@ An application of posts with comments that shows the use of events to communicat
 ### 4. Start app
 
   `$ npm run start`
+
+### 5. Start kubectl with miniKube in Linux
+
+  `$ minikube kubectl -- get pods -A`
+
+### 6. Create pods
+
+  `$ kubectl apply -f file.yaml`
+
+### 7. Get pods
+
+  `$ kubectl get pods`
+  
+---
+
+# References
+
+- [Kubectl Errors](./.doc/knowErrors/kubectl-errors.md)
+- [Lubectl Commands](./.doc/kubectl-commands.md)
 
