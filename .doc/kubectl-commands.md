@@ -31,3 +31,7 @@
 - Delete a deployment
 
   `$kubectl delete deployment [depl_name]`
+
+- Refresk a deployment
+
+  `$kubectl rollout estart deployment [depl_name]`
