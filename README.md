@@ -64,4 +64,4 @@ An application of posts with comments that shows the use of events to communicat
 
 - [Kubectl Errors](./.doc/knowErrors/kubectl-errors.md)
 - [Lubectl Commands](./.doc/kubectl-commands.md)
-
+- [minikube Errors](https://stackoverflow.com/questions/60556096/unable-to-get-clusterip-service-url-from-minikube)
