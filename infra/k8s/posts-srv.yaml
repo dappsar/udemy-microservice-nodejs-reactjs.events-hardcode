@@ -9,6 +9,5 @@ spec:
   ports:
     - name: posts
       protocol: TCP
-      type: etl
       port: 4000
       targetPort: 4000
