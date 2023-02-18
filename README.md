@@ -7,7 +7,7 @@
 ![nginx](https://img.shields.io/badge/nginx-informational?style=flat&logo=nginx&logoColor=white&color=6aa6f8)
 ![minikube](https://img.shields.io/badge/minikube-informational?style=flat&logo=minikube&logoColor=white&color=6aa6f8)
 ![microservices](https://img.shields.io/badge/microservices-informational?style=flat&logo=microservices&logoColor=white&color=6aa6f8)
-
+![skaffold](https://img.shields.io/badge/skaffold-informational?style=flat&logo=skaffold&logoColor=white&color=6aa6f8)
 
 # Udemy Course MicroService with nodejs and React js (events hardcode part)
 
@@ -30,9 +30,10 @@ Note: All commands and script are prepared to run in Linux with minikube.
 - reactjs
 - micro-services
 - minikube
-- [Ingress-nginx](https://github.com/kubernetes/ingress-nginx)
 - Docker
 - Kubernetes
+- [Ingress-nginx](https://github.com/kubernetes/ingress-nginx)
+- [Skaffold](https://skaffold.dev/)
 
 ## Requirements For Initial Setup
 
@@ -40,82 +41,79 @@ Note: All commands and script are prepared to run in Linux with minikube.
 - Docker, Docker-compose
 - Kubernetes ([kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/))
 - miniKube (linux)
+- [Skaffold](https://skaffold.dev/)
 
 ## Setting Up
+
 ### 1. Clone/Download the Repository
-`$ git clone repo_url`
+  
+    `$ git clone repo_url`
 
 ### 2. Install Dependencies
-`$ npm install` (in each folder)
+  
+    `$ npm install` (in each folder)
 
 ### 3. Start kubectl with miniKube in Linux
 
-  `$ minikube start`
-  `$ minikube addons enable registry`
-  `$ minikube addons enable ingress`
-  `$ minikube addons enable dashboard`
-  `$ eval $(minikube docker-env)`
+    `$ ./scripts/minikube-build-images.sh`
 
-  Note: You have to run eval $(minikube docker-env) on each terminal you want to use, since it only sets the environment variables for the current shell session
+### 4. Update local hosts file
 
-### 4. kubectl port-forward
+  Add this entries:
 
-  In order to make docker accept pushing images to this registry, we have to redirect port 5000 on the docker virtual machine over to port 80 on the minikube registry service. Unfortunately, the docker vm cannot directly see the IP address of the minikube vm. To fix this, you will have to add one more level of redirection.
+    `192.168.49.2   posts.com`
 
-  Use kubectl port-forward to map your local workstation to the minikube vm
+  (192.168.49.2: 'minikube ip' command)
 
-    `$ kubectl port-forward --namespace kube-system service/registry 5000:80`
+### 5. start All Infrastrcture
 
-  [More info](https://minikube.sigs.k8s.io/docs/handbook/registry/)
+    `$ skaffold dev`
 
+### 6. Access to App Client
 
-### 5. Build images and put local registry
+    http://posts.com
 
-  `$ ./scripts/minikube-build-images.sh`
+### 7. Access to API
 
-### 6. update hosts file
-  Add these entries:
+    By host name (required that you add posts.com with minikube IP in your hosts file): 
 
-  192.168.49.2   posts.com 
-  (minikube ip)
+    `$ http://posts.com/posts` 
 
-### 7. Run Infrastructuro
+    By cluster IP:
 
-  `$ ./scripts/kubect-deploy-all.sh`
+    `$ http://localhost:[IP from 'minikube ip' command]:[port from 'kubectl get services' command]/[endpoint]`
 
-### 8. Access to API
-
-  - get minikube IP
-
-  `$ minikube UP`
-
-  - Get pod exposed port
-
-  `$ kbuectl get services`
-
-  - Access to endpoints
-
-  `$ http://localhost:[IP from minikube IP command]:[port from kubectl get services]/[endpoint]`
-
-  Example: `$ http://localhost:192.168.49.2:30257/posts`
+    Example: `$ http://localhost:192.168.49.2:30257/posts`
 
 
-![k8s](./.doc/images/k8s.png)
+
+  ![client app](./.doc/images/app.png)
+
+### 8. View minikube Dashboard
+
+    `$ minikube dashboard` 
+
+  ![k8s](./.doc/images/k8s.png)
+
 
 ### Other Comamnds
 
+  - Build images and put local registry
+
+    `$ ./scripts/minikube-build-images.sh`
+
+  - Run Infrastructuro manually
+
+    `$ ./scripts/kubect-deploy-all.sh`
+
   - get specific pod port:
 
-  `$ kubectl exec posts-depl-6c445fcf4d-qpx95 -- netstat -tupln`
+    `$ kubectl exec posts-depl-6c445fcf4d-qpx95 -- netstat -tupln`
 
   - Check someting running in port 80
 
-  `$ sudo lsof -i tcp:80`
-
-  - Open minikube Dashboard
-
-  `$ minikube Dashboard`
-
+    
+    `$ sudo lsof -i tcp:80`
 
 ---
 
