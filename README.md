@@ -48,6 +48,7 @@ An application of posts with comments that shows the use of events to communicat
 
 ### 5. Start kubectl with miniKube in Linux
 
+  `$ minikube start`
   `$ minikube kubectl -- get pods -A`
 
 ### 6. Create pods
@@ -57,7 +58,11 @@ An application of posts with comments that shows the use of events to communicat
 ### 7. Get pods
 
   `$ kubectl get pods`
-  
+
+### 7. Open minikube Dashboard
+
+  `$ minikube Dashboard`
+
 ---
 
 # References

@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: query
-          image: cygnetops/query-84
+          image: mento/query:lastest
 ---
 apiVersion: v1
 kind: Service

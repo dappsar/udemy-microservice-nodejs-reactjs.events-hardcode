@@ -35,3 +35,16 @@
 - Refresk a deployment
 
   `$kubectl rollout estart deployment [depl_name]`
+
+- Get events
+
+`$kubectl get events`
+
+- kubectl configuration View
+
+`$kubectl config view`
+
+## References
+
+- [kubernetes minikube guide](https://kubernetes.io/es/docs/tutorials/hello-minikube/)
+

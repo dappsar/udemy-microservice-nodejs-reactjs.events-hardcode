@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: event-bus
-          image: mento/event-bus
+          image: mento/event-bus:lastest
           imagePullPolicy: IfNotPresent
 ---
 apiVersion: v1
