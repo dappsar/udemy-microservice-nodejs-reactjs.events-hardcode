@@ -36,6 +36,8 @@
 
   `$kubectl rollout estart deployment [depl_name]`
 
+## Others Kubernetes Commands
+
 - Get events
 
 `$kubectl get events`
@@ -43,6 +45,45 @@
 - kubectl configuration View
 
 `$kubectl config view`
+
+- Check cluster status
+
+`$kubectl cluster-info`
+
+- Check running nodes
+
+`$kubectl get nodes`
+
+## Associated minikube Commands
+
+- Start a running local kubernetes cluster
+
+`$minikube start`
+
+- Stop a running local kubernetes cluster
+
+`$minikube stop`
+
+- Delete a local kubernetes cluster
+
+`$minikube delete`
+
+- Access minikube VM using ssh
+
+`$minikube ssh`
+
+- view addons
+
+`$minikube addons list`
+
+- Enable minikube addoins
+
+`$minikube addons enable <module>`
+
+- minikube dashboard
+
+`$minikube dashboard`
+
 
 ## References
 
