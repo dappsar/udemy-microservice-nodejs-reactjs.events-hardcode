@@ -49,19 +49,57 @@ An application of posts with comments that shows the use of events to communicat
 ### 5. Start kubectl with miniKube in Linux
 
   `$ minikube start`
-  `$ minikube kubectl -- get pods -A`
+  `$ minikube addons enable registry`
+  `$ minikube addons enable dashboard`
+  `$ eval $(minikube docker-env)`
 
-### 6. Create pods
+  Note: You have to run eval $(minikube docker-env) on each terminal you want to use, since it only sets the environment variables for the current shell session
+
+### 6. kubectl port-forward
+
+  In order to make docker accept pushing images to this registry, we have to redirect port 5000 on the docker virtual machine over to port 80 on the minikube registry service. Unfortunately, the docker vm cannot directly see the IP address of the minikube vm. To fix this, you will have to add one more level of redirection.
+
+  Use kubectl port-forward to map your local workstation to the minikube vm
+
+    `$ kubectl port-forward --namespace kube-system service/registry 5000:80`
+
+  [More info](https://minikube.sigs.k8s.io/docs/handbook/registry/)
+
+
+### 7. Create pods
 
   `$ kubectl apply -f file.yaml`
 
-### 7. Get pods
 
-  `$ kubectl get pods`
-
-### 7. Open minikube Dashboard
+### 8. Open minikube Dashboard
 
   `$ minikube Dashboard`
+
+
+### 9. Access to API
+
+  - get minikube IP
+
+  `$ minikube UP`
+
+  - Get pod exposed port
+
+  `$ kbuectl get services`
+
+  - Access to endpoints
+
+  `$ http://localhost:[IP from minikube IP command]:[port from kubectl get services]/[endpoint]`
+
+  Example: `$ http://localhost:192.168.49.2:30257/posts`
+
+
+![k8s](./.doc/images/k8s.png)
+
+### Other Comamnds
+
+  - get specific pod port:
+
+  `$ kubectl exec posts-depl-6c445fcf4d-qpx95 -- netstat -tupln`
 
 ---
 
@@ -70,3 +108,6 @@ An application of posts with comments that shows the use of events to communicat
 - [Kubectl Errors](./.doc/knowErrors/kubectl-errors.md)
 - [Lubectl Commands](./.doc/kubectl-commands.md)
 - [minikube Errors](https://stackoverflow.com/questions/60556096/unable-to-get-clusterip-service-url-from-minikube)
+- [minikube Error ImagePullBackOff local repository with Minikube](https://stackoverflow.com/questions/38979231/imagepullbackoff-local-repository-with-minikube)
+- [minikube Error registry](https://stackoverflow.com/questions/74493358/docker-manifest-unknown-from-local-docker-registry)
+- [minikube run local images](https://stackoverflow.com/questions/42564058/how-to-use-local-docker-images-with-minikube)

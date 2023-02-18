@@ -14,8 +14,9 @@ spec:
     spec:
       containers:
         - name: event-bus
-          image: mento/event-bus:lastest
+          image: localhost:5000/event-bus:latest
           imagePullPolicy: IfNotPresent
+
 ---
 apiVersion: v1
 kind: Service

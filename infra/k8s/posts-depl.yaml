@@ -14,8 +14,11 @@ spec:
     spec:
       containers:
         - name: posts
-          image: mento/posts:0.0.2
+          #image: posts:latest
+          #image: host.minikube.internal:5000/posts:latest
+          image: localhost:5000/posts:latest
           imagePullPolicy: IfNotPresent
+
 ---
 apiVersion: v1
 kind: Service

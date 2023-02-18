@@ -14,8 +14,9 @@ spec:
     spec:
       containers:
         - name: comments
-          image: mento/comments:lastest
+          image: localhost:5000/comments:latest
           imagePullPolicy: IfNotPresent
+
 ---
 apiVersion: v1
 kind: Service

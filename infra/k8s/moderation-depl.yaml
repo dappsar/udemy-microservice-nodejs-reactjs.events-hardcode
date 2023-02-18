@@ -14,8 +14,9 @@ spec:
     spec:
       containers:
         - name: moderation
-          image: mento/moderation:lastest
+          image: localhost:5000/moderation:latest
           imagePullPolicy: IfNotPresent
+
 ---
 apiVersion: v1
 kind: Service
