@@ -120,12 +120,24 @@ Note: All commands and script are prepared to run in Linux with minikube.
 
 # Some Notes
 
+## (+)
+
 - The big challenge in microservices is **data**.
 - Different ways to share data between services. We focused on **async communication**.
 - Async communication focuses on communication changes using events sent to an **event bus**.
 - Async communication encourages each service to be 100% self-sufficent. Relatively easy to handle temporary downtime or new service creation.
 - Docker makes it easier to package up services.
 - Kubernetes is a pain to setup, but makes it really easy to deploy + scale services.
+
+## (-)
+
+- Lots of duplicated code.
+- Really hard o picture the flow of events between services.
+- Really hard to remember what properties an event should have.
+- Really hard to test some event flows.
+- Machine is getting laggy running kubernetes and everything else.
+- What if someone created a comment after editing 5 other after editing a post while balancing on a tight rope.
+
 
 ---
 
