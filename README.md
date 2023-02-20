@@ -9,7 +9,7 @@
 ![microservices](https://img.shields.io/badge/microservices-informational?style=flat&logo=microservices&logoColor=white&color=6aa6f8)
 ![skaffold](https://img.shields.io/badge/skaffold-informational?style=flat&logo=skaffold&logoColor=white&color=6aa6f8)
 
-# Udemy Course MicroService with nodejs and React js (events hardcode part)
+# Udemy Course MicroServices with nodejs and React js (events hardcode part)
 
 ## Introduction
 
@@ -120,12 +120,34 @@ Note: All commands and script are prepared to run in Linux with minikube.
 
 # Some Notes
 
+## (+)
+
 - The big challenge in microservices is **data**.
 - Different ways to share data between services. We focused on **async communication**.
 - Async communication focuses on communication changes using events sent to an **event bus**.
 - Async communication encourages each service to be 100% self-sufficent. Relatively easy to handle temporary downtime or new service creation.
 - Docker makes it easier to package up services.
 - Kubernetes is a pain to setup, but makes it really easy to deploy + scale services.
+
+## (-)
+
+- Lots of duplicated code.
+    * Solution: Build a central library as a NPM module to share code between differents projects.
+
+- Really hard to picture the flow of events between services.
+    * Solution: Precisely define all of our events in this shared library.
+
+- Really hard to remember what properties an event should have.
+    * Solution: Write everything in Typescript.
+
+- Really hard to test some event flows.
+    * Solution: Write tests for as much as possible/reasonable.
+
+- Machine is getting laggy running kubernetes and everything else.
+    * Solution: Run a k8s cluster in the cloud and develop on it, almost as quicly as local.
+
+- What if someone created a comment after editing 5 other after editing a post while balancing on a tight rope.
+    * Solution: Introduce a lot of code to handle concurrency issues.
 
 ---
 
