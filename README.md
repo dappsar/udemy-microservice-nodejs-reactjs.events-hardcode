@@ -9,7 +9,7 @@
 ![microservices](https://img.shields.io/badge/microservices-informational?style=flat&logo=microservices&logoColor=white&color=6aa6f8)
 ![skaffold](https://img.shields.io/badge/skaffold-informational?style=flat&logo=skaffold&logoColor=white&color=6aa6f8)
 
-# Udemy Course MicroService with nodejs and React js (events hardcode part)
+# Udemy Course MicroServices with nodejs and React js (events hardcode part)
 
 ## Introduction
 
@@ -135,7 +135,7 @@ Note: All commands and script are prepared to run in Linux with minikube.
     * Solution: Build a central library as a NPM module to share code between differents projects.
 
 - Really hard to picture the flow of events between services.
-    * Solution: Precisely define all of our events in this ahred library.
+    * Solution: Precisely define all of our events in this shared library.
 
 - Really hard to remember what properties an event should have.
     * Solution: Write everything in Typescript.
