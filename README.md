@@ -132,12 +132,22 @@ Note: All commands and script are prepared to run in Linux with minikube.
 ## (-)
 
 - Lots of duplicated code.
-- Really hard o picture the flow of events between services.
-- Really hard to remember what properties an event should have.
-- Really hard to test some event flows.
-- Machine is getting laggy running kubernetes and everything else.
-- What if someone created a comment after editing 5 other after editing a post while balancing on a tight rope.
+    * Solution: Build a central library as a NPM module to share code between differents projects.
 
+- Really hard to picture the flow of events between services.
+    * Solution: Precisely define all of our events in this ahred library.
+
+- Really hard to remember what properties an event should have.
+    * Solution: Write everything in Typescript.
+
+- Really hard to test some event flows.
+    * Solution: Write tests for as much as possible/reasonable.
+
+- Machine is getting laggy running kubernetes and everything else.
+    * Solution: Run a k8s cluster in the cloud and develop on it, almost as quicly as local.
+
+- What if someone created a comment after editing 5 other after editing a post while balancing on a tight rope.
+    * Solution: Introduce a lot of code to handle concurrency issues.
 
 ---
 
